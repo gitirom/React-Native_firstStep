@@ -21,8 +21,9 @@ export default function App() {
   }
   function addGoalHandler () {
     setCourseGoals((currentCourseGoals) =>
-      [...currentCourseGoals, enteredGoalText]
-    );
+      [...currentCourseGoals,
+        {text: enteredGoalText, key: Math.random().toString()},
+      ]);
   }
   return (
     
@@ -35,15 +36,17 @@ export default function App() {
         <Button title="Add Goal" onPress={addGoalHandler}/>
       </View>
       <View  style={styles.goalsContainer} >
-        <ScrollView  > 
-          {
-            courseGoals.map((goal) => (
-            <View key={goal} style={styles.goalItem}> 
-              <Text style={styles.goalText}>{goal}</Text>
-            </View>
-            ))
-          }
-        </ScrollView>
+        <FlatList 
+          data={courseGoals}  
+          renderItem={(itemData) => {
+            return (
+              <View  style={styles.goalItem}> 
+                <Text style={styles.goalText}>{itemData.item.text}</Text>
+              </View>
+            );
+          }}
+        /> 
+
       </View>
     </View>
     
@@ -90,3 +93,6 @@ const styles = StyleSheet.create({
 
 //scrollView its making as to get scrolling the our view 
 //the view that having key property this for get the radius working in the both devices 
+//Overall, FlatList is a useful component for rendering lists of data in a performant and customizable way in React Native.
+//renderItem using for exact the way that you want to render your list 
+//teh way that allows you to put the key prop.. is deferent here look up at the code 
