@@ -22,7 +22,7 @@ export default function App() {
   function addGoalHandler () {
     setCourseGoals((currentCourseGoals) =>
       [...currentCourseGoals,
-        {text: enteredGoalText, key: Math.random().toString()},
+        {text: enteredGoalText, id: Math.random().toString()},
       ]);
   }
   return (
@@ -44,6 +44,9 @@ export default function App() {
                 <Text style={styles.goalText}>{itemData.item.text}</Text>
               </View>
             );
+          }}
+          keyExtractor={(item, index) => {
+            return item.id;
           }}
         /> 
 
@@ -96,3 +99,4 @@ const styles = StyleSheet.create({
 //Overall, FlatList is a useful component for rendering lists of data in a performant and customizable way in React Native.
 //renderItem using for exact the way that you want to render your list 
 //teh way that allows you to put the key prop.. is deferent here look up at the code 
+//keyExtractor prop is used to extract a unique key for each item in the list
