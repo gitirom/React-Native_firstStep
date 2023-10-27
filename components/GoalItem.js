@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 function GoalItem (props) { //I use props to get pass the data from app.js to this compo..
     return (
-        <View  style={styles.goalItem}> 
-            <Text style={styles.goalText}>{props.text}</Text>
-        </View>
+        <Pressable onPress={props.onDeleteItem.bind(this, props.id)} >  
+            <View  style={styles.goalItem}> 
+                <Text style={styles.goalText}>{props.text}</Text>
+            </View>
+        </Pressable>
         );
 }
 
@@ -21,3 +23,5 @@ const styles = StyleSheet.create({
         color: 'white',
     },
 });
+
+//used to bind event handlers to the component instance.

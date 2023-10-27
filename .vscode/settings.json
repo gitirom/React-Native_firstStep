@@ -1,5 +1,8 @@
 {
     "marquee.widgets.npm-stats.packageNames": [
         "fisrstproj"
+    ],
+    "cSpell.words": [
+        "Pressable"
     ]
 }
