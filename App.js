@@ -6,9 +6,10 @@ import {
         Button,
       } from 'react-native';
 
-      import GoalItem from './components/GoalItem';
-      import GoalInput from './components/GoalInpu';
-      
+  import GoalItem from './components/GoalItem';
+  import GoalInput from './components/GoalInpu';
+  import { StatusBar } from 'expo-status-bar';
+
 
 
 export default function App() {
@@ -40,30 +41,31 @@ export default function App() {
   }
 
   return (
-    
-    <View style={styles.appContainer} >
-      <Button title="Add New Goal" color="#5e0acc" onPress={startAddGoalHandler} />
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler} /> 
-      <View  style={styles.goalsContainer} >
-        <FlatList 
-          data={courseGoals}  
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                id={itemData.item.id}
-                onDeleteItem={deleteGoalHandler}
-              />
-              );
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-        /> 
+    <>
+    <StatusBar style='light' />
+      <View style={styles.appContainer} >
+        <Button title="Add New Goal" color="#5e0acc" onPress={startAddGoalHandler} />
+        <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler} /> 
+        <View  style={styles.goalsContainer} >
+          <FlatList 
+            data={courseGoals}  
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteItem={deleteGoalHandler}
+                />
+                );
+            }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+          /> 
 
+        </View>
       </View>
-    </View>
-    
+    </>
     
   );
 }
@@ -88,3 +90,4 @@ const styles = StyleSheet.create({
 //renderItem using for exact the way that you want to render your list 
 //teh way that allows you to put the key prop.. is deferent here look up at the code 
 //keyExtractor prop is used to extract a unique key for each item in the list
+// I add a main background color for all the app screen in  app.js {}
