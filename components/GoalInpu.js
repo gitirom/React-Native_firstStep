@@ -18,7 +18,7 @@ function GoalInput(props) {
     }
 
     return (
-        <Modal visible={props.visible} animationType="slide" >
+        <Modal visible={props.visible} animationType="slide" >  
             <View style={styles.inputContainer}>
                 <TextInput style={styles.textInput} 
                 placeholder='Your course gaol!'
@@ -33,7 +33,7 @@ function GoalInput(props) {
                         }}/>
                     </View>
                     <View style={styles.Button} >
-                        <Button title="Cancel"  />
+                        <Button title="Cancel" onPress={props.onCancel}  />
                     </View>
                 </View>
                 
@@ -70,3 +70,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 8
     }
 });
+
+
+//Module with the visible attrb.. it's for getting put it in a useState for grt show the content 

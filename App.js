@@ -28,17 +28,22 @@ export default function App() {
     setCourseGoals((currentCourseGoals) => {
       return currentCourseGoals.filter((goal) => goal.id !== id);
     });
+    endAddGoalHandler();
   }
 
   function startAddGoalHandler (){
     setModalIsVisible(true);
   }
 
+  function endAddGoalHandler (){
+    setModalIsVisible(false);
+  }
+
   return (
     
     <View style={styles.appContainer} >
       <Button title="Add New Goal" color="#5e0acc" onPress={startAddGoalHandler} />
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} /> 
+      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler} /> 
       <View  style={styles.goalsContainer} >
         <FlatList 
           data={courseGoals}  
